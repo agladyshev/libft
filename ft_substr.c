@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 13:02:07 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 17:01:29 by stiffiny         ###   ########.fr       */
+/*   Created: 2021/04/25 13:40:53 by stiffiny          #+#    #+#             */
+/*   Updated: 2021/04/25 14:54:58 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char	*p;
+	size_t	size;
 
-	i = 0;
-	if (n == 0)
+	p = 0;
+	size = ft_strlen(s) - start;
+	if (len < size)
+		size = len;
+	p = malloc(size + 1);
+	if (p == 0)
 		return (0);
-	while ((i < n - 1))
+	p[size] = 0;
+	while (size > 0)
 	{
-		if (*((unsigned char *)s1 + i) != *((unsigned char *)s2 + i))
-			return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
-		i++;
+		p[size - 1] = s[size + start - 1];
+		size--;
 	}
-	return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
+	return (p);
 }

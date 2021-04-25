@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 13:02:07 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 17:01:29 by stiffiny         ###   ########.fr       */
+/*   Created: 2021/04/25 18:03:23 by stiffiny          #+#    #+#             */
+/*   Updated: 2021/04/25 18:52:58 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	unsigned int	div;
+	char			c;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((i < n - 1))
+	div = (n < 0) ? (unsigned int)(-n) : (unsigned int)n;
+	if (n < 0)
+		write(fd, "-", 1);
+	c = (div % 10) + 48;
+	if (div / 10 != 0)
 	{
-		if (*((unsigned char *)s1 + i) != *((unsigned char *)s2 + i))
-			return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
-		i++;
+		div /= 10;
+		ft_putnbr_fd(div, fd);
 	}
-	return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
+	write(fd, &c, 1);
 }

@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 13:02:07 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 17:01:29 by stiffiny         ###   ########.fr       */
+/*   Created: 2021/04/25 17:09:40 by stiffiny          #+#    #+#             */
+/*   Updated: 2021/04/25 18:52:04 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_itoa(int n)
 {
-	size_t	i;
+	size_t			size;
+	unsigned int	div;
+	char			*s;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((i < n - 1))
+	div = (n < 0) ? (unsigned int)(-n) : (unsigned int)n;
+	size = 0;
+	while (div != 0)
 	{
-		if (*((unsigned char *)s1 + i) != *((unsigned char *)s2 + i))
-			return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
-		i++;
+		div /= 10;
+		size++;
 	}
-	return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
+	size = (n < 0 || n == 0) ? size + 1 : size;
+	s = malloc(size + 1);
+	if (s == 0)
+		return (0);
+	s[0] = (n < 0) ? '-' : '0';
+	s[size] = 0;
+	div = (n < 0) ? (unsigned int)(-n) : (unsigned int)n;
+	while (div != 0)
+	{
+		s[size - 1] = div % 10 + 48;
+		div /= 10;
+		size--;
+	}
+	return (s);
 }
