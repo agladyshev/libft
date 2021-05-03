@@ -6,11 +6,10 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 18:03:23 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 18:52:58 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/03 10:35:48 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)

@@ -6,9 +6,11 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 17:25:54 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 17:30:04 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/03 10:30:40 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static	int		ft_isspace(int c)
 {

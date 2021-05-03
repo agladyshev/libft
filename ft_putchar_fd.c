@@ -6,11 +6,11 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 18:00:11 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 18:32:30 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/03 10:34:45 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

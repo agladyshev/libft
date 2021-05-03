@@ -6,9 +6,11 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 15:37:11 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/23 16:53:09 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/03 10:31:55 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

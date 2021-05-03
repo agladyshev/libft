@@ -1,8 +1,14 @@
 .PHONY: all clean fclean re 
 
-SRCS		= $(wildcard *.c)
+BONUS		= $(wildcard ft_lst*.c)
 
-OBJS		= ${SRCS:.c=.o}
+FULL		= $(wildcard ft_*.c)
+
+SRCS		= $(filter-out $(BONUS), $(FULL))
+
+OBJS_CORE	= ${SRCS:.c=.o}
+
+OBJS_FULL	= ${FULL:.c=.o}
 
 HEADER		= libft.h
 
@@ -14,13 +20,16 @@ RM			= rm -f
 
 CFLAGS 		= -Wall -Wextra -Werror
 
-${NAME}:	${OBJS}
-			ar rc ${NAME} ${OBJS}
+${NAME}:	${OBJS_CORE}
+			ar rc ${NAME} ${OBJS_CORE}
+
+bonus:		${OBJS_FULL}
+			ar rc ${NAME} ${OBJS_FULL}
 
 all:		${NAME}
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS_FULL}
 
 fclean:		clean
 			${RM} ${NAME}

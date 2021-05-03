@@ -6,9 +6,11 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 16:11:10 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/24 15:57:52 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/03 10:36:29 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
