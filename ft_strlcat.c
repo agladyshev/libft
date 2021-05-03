@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 16:11:02 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 14:54:14 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/03 13:21:06 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	while (dst[i] != '\0')
 		i++;
 	j = 0;
-	while (src[j] != '\0' && j != size - i - 1)
+	while (src[j] != '\0' && (i + j + 1) < size)
 	{
 		dst[i + j] = src[j];
 		j++;
 	}
-	if (src[j] != '\0')
-	{
-		dst[i + j] = src[j];
-		while (src[j] != '\0')
-			j++;
-	}
+	dst[i + j] = '\0';
+	while (src[j] != '\0')
+		j++;
+	if (size > i)
+		return (j + i);
 	else
-	{
-		dst[i + j] = '\0';
-	}
-	return (i + j);
+		return (j + size);
 }

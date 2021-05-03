@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 17:25:54 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/03 10:30:40 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/03 11:55:25 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int				ft_atoi(const char *nptr)
 	i = 0;
 	while (ft_isspace(nptr[i]))
 		i++;
-	if (nptr[i] == '-')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		is_negative = 1;
+		is_negative = (nptr[i] == '-') ? -1 : 0;
 		i++;
 	}
 	while (ft_isnum(nptr[i]))
