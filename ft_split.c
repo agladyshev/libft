@@ -6,13 +6,27 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 18:44:26 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/05 15:00:53 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/06 19:21:36 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-static int	count_words(char *str, char c)
+void	**free_str_arr(char **arr, int j)
+{
+	int	i;
+
+	i = 0;
+	while (i < j)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (0);
+}
+
+static int	count_words(char const *str, char c)
 {
 	int	i;
 	int	new_word;
@@ -35,7 +49,7 @@ static int	count_words(char *str, char c)
 	return (count);
 }
 
-static char	*strdup_len_at_i(char *str, int len, int i)
+static char	*strdup_len_at_i(char const *str, int len, int i)
 {
 	char	*ptr;
 	int		j;
@@ -53,7 +67,7 @@ static char	*strdup_len_at_i(char *str, int len, int i)
 	return (ptr);
 }
 
-static char	*get_word_at_i(char *str, char c, int *i)
+static char	*get_word_at_i(char const *str, char c, int *i)
 {
 	int		len;
 	int		new_word;
@@ -78,7 +92,7 @@ static char	*get_word_at_i(char *str, char c, int *i)
 	return (ptr);
 }
 
-char	**ft_split(char *str, char c)
+char	**ft_split(char const *str, char c)
 {
 	int		count;
 	char	**arr;
@@ -100,7 +114,7 @@ char	**ft_split(char *str, char c)
 	{
 		arr[j] = get_word_at_i(str, c, i);
 		if (arr[j] == 0)
-			return (0);
+			return ((char **)free_str_arr(arr, j));
 		j++;
 	}
 	free(i);
