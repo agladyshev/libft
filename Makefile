@@ -6,7 +6,7 @@
 #    By: stiffiny <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 14:36:27 by stiffiny          #+#    #+#              #
-#    Updated: 2021/05/06 17:30:41 by stiffiny         ###   ########.fr        #
+#    Updated: 2021/05/06 17:37:09 by stiffiny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,8 +55,8 @@ $(NAME)	:	$(OBJS)
 
 include	$(wildcard $(D_FILES))
 
-bonus	:
-			@make OBJS="${OBJS_BONUS}" all
+bonus	:	$(OBJS) $(OBJS_BONUS)
+			ar rcs $(NAME) $?
 clean	:
 			$(RM) $(OBJS) $(OBJS_BONUS) $(D_FILES)
 
