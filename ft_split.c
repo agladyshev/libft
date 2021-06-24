@@ -6,13 +6,13 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 18:44:26 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/06 19:21:36 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/06 21:16:45 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	**free_str_arr(char **arr, int j)
+char	**free_str_arr(char **arr, int j)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ void	**free_str_arr(char **arr, int j)
 		i++;
 	}
 	free(arr);
-	return (0);
+	return ((char **)0);
 }
 
 static int	count_words(char const *str, char c)
@@ -97,10 +97,9 @@ char	**ft_split(char const *str, char c)
 	int		count;
 	char	**arr;
 	int		j;
-	int		*i;
+	int		i;
 
-	i = malloc(sizeof(int));
-	if (i == 0 || str == 0)
+	if (str == 0)
 		return (0);
 	arr = 0;
 	count = count_words(str, c);
@@ -109,14 +108,13 @@ char	**ft_split(char const *str, char c)
 		return (0);
 	arr[count] = 0;
 	j = 0;
-	*i = 0;
+	i = 0;
 	while (j < count)
 	{
-		arr[j] = get_word_at_i(str, c, i);
+		arr[j] = get_word_at_i(str, c, &i);
 		if (arr[j] == 0)
-			return ((char **)free_str_arr(arr, j));
+			return (free_str_arr(arr, j));
 		j++;
 	}
-	free(i);
 	return (arr);
 }

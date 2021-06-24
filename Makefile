@@ -6,7 +6,7 @@
 #    By: stiffiny <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/06 14:36:27 by stiffiny          #+#    #+#              #
-#    Updated: 2021/05/06 17:37:09 by stiffiny         ###   ########.fr        #
+#    Updated: 2021/05/06 21:08:53 by stiffiny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,6 @@ D_FILES		= $(wildcard ft*.d)
 
 CC			= gcc
 
-OPTFLAGS	= -O2
-
 CFLAGS 		= -Wall -Wextra -Werror
 
 RM			= rm -f
@@ -51,7 +49,7 @@ $(NAME)	:	$(OBJS)
 			ar rcs $(NAME) $?
 
 %.o : %.c
-	$(CC) $(CFLAGS) $(OPTFLAGS) -c $< -o ${<:.c=.o} -MD
+	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o} -MD
 
 include	$(wildcard $(D_FILES))
 

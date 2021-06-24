@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 18:42:49 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/04 18:42:50 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/06 21:17:12 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*cur;
+	t_list	**begin;
 
-	cur = 0;
+	begin = lst;
 	if (lst != 0)
 	{
 		while (*lst)
@@ -27,7 +28,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 			cur->next = 0;
 			free(cur);
 		}
-		*lst = 0;
+		*begin = 0;
 	}
-	lst = 0;
 }
