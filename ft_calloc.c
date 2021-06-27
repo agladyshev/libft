@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 10:16:37 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/06 21:14:22 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/06/27 18:17:32 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t			arr_size;
 	size_t			cur;
-	void				*p;
+	void			*p;
 
 	arr_size = 0;
 	cur = 0;
