@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stiffiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 15:58:25 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/26 15:06:26 by stiffiny         ###   ########.fr       */
+/*   Created: 2021/05/04 18:43:51 by stiffiny          #+#    #+#             */
+/*   Updated: 2021/05/05 13:27:48 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (lst)

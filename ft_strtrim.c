@@ -6,15 +6,15 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 15:07:18 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 17:06:27 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/05 14:59:56 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		is_in_set(char const *set, char c)
+static int	is_in_set(char const *set, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i] != 0)
@@ -26,13 +26,15 @@ static int		is_in_set(char const *set, char c)
 	return (0);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start;
 	int		len;
 	int		i;
 	char	*p;
 
+	if (s1 == 0 || set == 0)
+		return (0);
 	start = 0;
 	i = 0;
 	while (is_in_set(set, s1[start]) && s1[start] != 0)

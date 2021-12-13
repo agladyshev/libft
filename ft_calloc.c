@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 10:16:37 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 12:04:47 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/06/27 18:17:32 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned int		arr_size;
-	unsigned int		cur;
-	void				*p;
+	size_t			arr_size;
+	size_t			cur;
+	void			*p;
 
 	arr_size = 0;
 	cur = 0;
 	p = 0;
-	if (nmemb == 0 || size == 0)
-		return (0);
 	while (nmemb > 0)
 	{
 		cur += size;

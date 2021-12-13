@@ -6,50 +6,53 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 17:25:54 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/03 11:55:25 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/06 16:32:24 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_isspace(int c)
+static	int	ft_isspace(int c)
 {
-	if (c == '\f' || c == '\n' ||
-		c == '\r' || c == '\t' ||
+	if (c == '\f' || c == '\n' || \
+		c == '\r' || c == '\t' || \
 		c == '\v' || c == 32)
 		return (1);
 	return (0);
 }
 
-static	int		ft_isnum(int c)
+static	int	ft_isnum(int c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);
 	return (0);
 }
 
-int				ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	is_negative;
-	int	num;
+	int			i;
+	int			is_negative;
+	long int	num;
 
 	num = 0;
-	is_negative = 0;
+	is_negative = 1;
 	i = 0;
-	while (ft_isspace(nptr[i]))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	while (ft_isspace(*nptr))
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
 	{
-		is_negative = (nptr[i] == '-') ? -1 : 0;
-		i++;
+		if (*nptr == '-')
+			is_negative = -1;
+		nptr++;
 	}
 	while (ft_isnum(nptr[i]))
 	{
-		num = num * 10 + (nptr[i] - 48);
-		i++;
+		num = num * 10 + (*nptr++ - 48);
+		if (num < 0 && is_negative == 1)
+			return (-1);
+		if (num < 0 && is_negative == -1)
+			return (0);
 	}
-	if (is_negative)
-		num *= -1;
-	return (num);
+	num *= is_negative;
+	return ((int)num);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stiffiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 15:57:27 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/30 11:23:21 by stiffiny         ###   ########.fr       */
+/*   Created: 2021/05/04 18:42:58 by stiffiny          #+#    #+#             */
+/*   Updated: 2021/05/04 18:43:00 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst != 0)
 	{
-		(*del)(lst->content);
-		lst->content = 0;
+		if (del != 0)
+			(del)(lst->content);
+		free(lst);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 16:11:10 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/03 10:36:29 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/04 17:59:53 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != c && *s != '\0')
+	while (*s != (char)c && *s != '\0')
 		s++;
-	if (*s == c)
+	if (*s == (char)c)
 		return ((char *)s);
 	return (0);
 }

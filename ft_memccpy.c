@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:04:14 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/24 18:06:31 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/05 11:32:22 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	while (i < n)
 	{
 		*(char *)(dest + i) = *(char *)(src + i);
-		if (*(char *)(src + i) == c)
+		if (*(char *)(src + i) == (char)c)
 			return (dest + i + 1);
 		i++;
 	}

@@ -6,11 +6,32 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:09:40 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 18:52:04 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/05 14:50:47 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static size_t	get_int_size(int n)
+{
+	size_t			size;
+	unsigned int	div;
+
+	size = 0;
+	if (n <= 0)
+	{
+		size++;
+		div = (unsigned int)(-n);
+	}
+	else
+		div = (unsigned int)n;
+	while (div != 0)
+	{
+		div /= 10;
+		size++;
+	}
+	return (size);
+}
 
 char	*ft_itoa(int n)
 {
@@ -18,20 +39,19 @@ char	*ft_itoa(int n)
 	unsigned int	div;
 	char			*s;
 
-	div = (n < 0) ? (unsigned int)(-n) : (unsigned int)n;
-	size = 0;
-	while (div != 0)
-	{
-		div /= 10;
-		size++;
-	}
-	size = (n < 0 || n == 0) ? size + 1 : size;
+	size = get_int_size(n);
 	s = malloc(size + 1);
 	if (s == 0)
 		return (0);
-	s[0] = (n < 0) ? '-' : '0';
+	s[0] = '0';
+	if (n < 0)
+	{
+		s[0] = '-';
+		div = (unsigned int)(-n);
+	}
+	else
+		div = (unsigned int)n;
 	s[size] = 0;
-	div = (n < 0) ? (unsigned int)(-n) : (unsigned int)n;
 	while (div != 0)
 	{
 		s[size - 1] = div % 10 + 48;

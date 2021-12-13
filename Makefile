@@ -1,37 +1,66 @@
-.PHONY: all clean fclean re bonus $(NAME) 
-
-BONUS		= $(wildcard ft_lst*.c)
-
-FULL		= $(wildcard ft_*.c)
-
-SRCS		= $(filter-out $(BONUS), $(FULL))
-
-OBJS_CORE	= $(SRCS:.c=.o)
-
-OBJS_FULL	= $(FULL:.c=.o)
-
-HEADER		= libft.h
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: stiffiny <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/05/06 14:36:27 by stiffiny          #+#    #+#              #
+#    Updated: 2021/05/06 21:08:53 by stiffiny         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME		= libft.a
 
-CC			= gcc
+LIST		=	ft_atoi.c ft_bzero.c ft_calloc.c\
+				ft_isalnum.c ft_isalpha.c ft_isascii.c\
+				ft_isdigit.c ft_isprint.c ft_itoa.c\
+				ft_memccpy.c ft_memchr.c ft_memcmp.c\
+				ft_memcpy.c ft_memmove.c ft_memset.c\
+				ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
+				ft_putstr_fd.c ft_split.c ft_strchr.c\
+				ft_strdup.c ft_strjoin.c ft_strlcat.c\
+				ft_strlcpy.c ft_strlen.c ft_strmapi.c\
+				ft_strncmp.c ft_strnstr.c ft_strrchr.c\
+				ft_strtrim.c ft_substr.c ft_tolower.c\
+				ft_toupper.c
 
-RM			= rm -f
+LIST_BONUS	=	ft_lstadd_back.c ft_lstadd_front.c\
+				ft_lstclear.c ft_lstdelone.c\
+				ft_lstiter.c ft_lstlast.c\
+				ft_lstmap.c ft_lstnew.c\
+				ft_lstsize.c
+
+OBJS		= $(patsubst %.c,%.o,$(LIST))
+
+OBJS_BONUS	= $(patsubst %.c,%.o,$(LIST_BONUS))
+
+D_FILES		= $(wildcard ft*.d)
+
+CC			= gcc
 
 CFLAGS 		= -Wall -Wextra -Werror
 
-$(NAME):	$(OBJS_CORE)
-			ar rc $(NAME) $(OBJS_CORE)
+RM			= rm -f
 
-bonus:		$(OBJS_FULL)
-			ar rc $(NAME) $(OBJS_FULL)
+all	:		$(NAME)
 
-all:		$(NAME)
+$(NAME)	:	$(OBJS) 
+			ar rcs $(NAME) $?
 
-clean:
-			$(RM) $(OBJS_FULL)
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o} -MD
 
-fclean:		clean
+include	$(wildcard $(D_FILES))
+
+bonus	:	$(OBJS) $(OBJS_BONUS)
+			ar rcs $(NAME) $?
+clean	:
+			$(RM) $(OBJS) $(OBJS_BONUS) $(D_FILES)
+
+fclean	:	clean
 			$(RM) $(NAME)
 
-re:			fclean all
+re	:		fclean all
+
+.PHONY: all clean fclean re bonus

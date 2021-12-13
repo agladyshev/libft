@@ -6,7 +6,7 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:55:20 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/04/25 17:03:02 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/05/06 20:14:01 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	if (s1 == 0 || s2 == 0)
+		return (0);
 	p = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (p == 0)
 		return (0);
@@ -32,10 +34,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	while (s2[j] != 0)
 	{
-		p[i] = s2[j];
-		i++;
+		p[i + j] = s2[j];
 		j++;
 	}
-	p[i] = 0;
+	p[i + j] = 0;
 	return (p);
 }

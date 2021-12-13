@@ -6,13 +6,13 @@
 /*   By: stiffiny <stiffiny@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 11:38:05 by stiffiny          #+#    #+#             */
-/*   Updated: 2021/05/03 10:37:23 by stiffiny         ###   ########.fr       */
+/*   Updated: 2021/06/30 14:32:19 by stiffiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	char	*p;
 	size_t	len;
@@ -20,6 +20,8 @@ char			*ft_strdup(const char *s)
 
 	i = 0;
 	p = 0;
+	if (!s)
+		return (0);
 	len = ft_strlen(s);
 	p = malloc(len + 1);
 	if (p == 0)
